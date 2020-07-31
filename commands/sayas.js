@@ -20,7 +20,7 @@ module.exports = {
 		avatar = target.user.avatarURL({format: 'png', dynamic: true});
 		message.channel.createWebhook(target.displayName, {avatar: avatar}).then((hook) => {
 			// Send the message through the webhook.
-			hook.send(content, {disableMentions: true}).then(() => {
+			hook.send(content.join(' '), {disableMentions: true}).then(() => {
 				// Delete the command message and the webhook.
 				message.delete();
 				hook.delete();
