@@ -1,3 +1,5 @@
+const tools = require('../tools');
+
 module.exports = {
 	name: 'purge',
 	aliases: ['delete', 'pu'],

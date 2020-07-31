@@ -1,6 +1,4 @@
 const tools = require('../tools');
-// const {} = require('discord.js');
-// const {} = require('../config.json');
 
 module.exports = {
 	name: 'choose',
