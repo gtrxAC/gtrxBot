@@ -2,7 +2,7 @@
 
 the 3rd iteration of nobody's favorite discord utility bot
 
-[Invite Link]()
+[Invite Link](https://discord.com/oauth2/authorize?client_id=568738663572176916&permissions=8&scope=bot)
 
 ## Command List
 The prefix is `gb`, for example `gbpurge` or `gbpu` to purge.
