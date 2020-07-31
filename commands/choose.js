@@ -13,7 +13,7 @@ module.exports = {
 		const choice = args[Math.floor(Math.random() * args.length)];
 
 		// Send an embed with the choice.
-		return tools.embed(null)
-		.setDescription(`**Choices: ${args.length}\n**Result:** ${choice}`);
+		return tools.embed('Random Choice')
+		.setDescription(`**Choices:** ${args.length}\n**Result:** ${choice}`);
 	}
 }
