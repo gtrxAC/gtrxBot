@@ -5,6 +5,7 @@ module.exports = {
 	aliases: ['ev'],
 	description: "Runs JavaScript code.",
 	usage: '<code ...>',
+	cooldown: 0,
 	ownerOnly: true,
 	async run(message, args) {
 		return tools.embed('Success')

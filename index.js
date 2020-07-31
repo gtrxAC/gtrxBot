@@ -34,7 +34,7 @@ client.on('message', async message => {
 	if (!command) return;
 
 	// If the user is on cooldown, exit.
-	const {name, usage, cooldown = 3000, minArgs = 0, ownerOnly, guildOnly, requires, run} = command;
+	const {name, usage, cooldown = 2000, minArgs = 0, ownerOnly, guildOnly, requires, run} = command;
 	const timestamps = cooldowns.get(name);
 	if (timestamps.has(message.author.id)) {
 		const expirationTime = timestamps.get(message.author.id) + cooldown;
