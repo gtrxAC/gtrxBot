@@ -23,7 +23,7 @@ module.exports = {
 		if (sniped.embed) {
 			let embedData = '';
 			if (sniped.embed.title) embedData += `\n> **${sniped.embed.title}**`;
-			if (sniped.embed.description) embedData += `\n> ${sniped.embed.description}`;
+			if (sniped.embed.description) embedData += `\n> ${sniped.embed.description.split('\n').join('\n> ')}`;
 			if (sniped.embed.footer) embedData += `\n> ${sniped.embed.footer.text}`;
 			embed.addField('Embed', embedData);
 		}
