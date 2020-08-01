@@ -73,7 +73,8 @@ client.on('message', async message => {
 	client.snipeMap.set(message.channel.id, {
 		author: message.author.tag,
 		content: message.content,
-		attachments: message.attachments
+		attachments: message.attachments,
+		embed: message.embeds[0]
 	})
 })
 

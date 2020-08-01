@@ -19,6 +19,15 @@ module.exports = {
 		const embed = tools.embed(`${sniped.author} said:`)
 		.setDescription(sniped.content);
 
+		// If the sniped message had an embed, add that to the output.
+		if (sniped.embed) {
+			let embedData = '';
+			if (sniped.embed.title) embedData += `\n> **${sniped.embed.title}**`;
+			if (sniped.embed.description) embedData += `\n> ${sniped.embed.description}`;
+			if (sniped.embed.footer) embedData += `\n> ${sniped.embed.footer.text}`;
+			embed.addField('Embed', embedData);
+		}
+
 		// If the sniped message had an image, add that to the embed.
 		if (sniped.attachments.size) embed.setImage(sniped.attachments.first().proxyURL);
 
