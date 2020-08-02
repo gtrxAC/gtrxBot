@@ -9,8 +9,7 @@ module.exports = {
 	},
 
 	error(message, error) {
-		const embed = this.embed()
-		.setTitle('Error')
+		const embed = this.embed('Error')
 		.setDescription(error);
 		message.channel.send(embed);
 		return false;
