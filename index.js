@@ -25,7 +25,7 @@ client.on('message', async message => {
 	if (message.author.bot) return;
 
 	// Separate the message content into the command and arguments.
-	const args = message.content.slice(prefix.length).split(/\s+/);
+	const args = message.content.slice(prefix.length).split(' ');
 	const commandName = args.shift().toLowerCase();
 	const command = client.commands.get(commandName)
 		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
