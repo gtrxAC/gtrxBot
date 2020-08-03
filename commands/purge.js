@@ -9,14 +9,11 @@ module.exports = {
 	minArgs: 1,
 	guildOnly: true,
 	async run(message, [amount]) {
-		// Delete the command message.
-		message.delete();
-
 		// Get the amount of messages to delete, max it out at 100.
 		const msgs = Math.min(amount, 100);
 
 		// Delete the messages.
-		await message.channel.bulkDelete(msgs)
+		await message.channel.bulkDelete(msgs + 1)
 
 		// Send a confirmation and delete it after 1 second.
 		const embed = tools.embed('Success')
