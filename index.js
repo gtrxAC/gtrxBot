@@ -49,7 +49,7 @@ client.on('message', async message => {
 		return tools.error(message, `${name} requires at least ${minArgs} args: \`${usage}\``);
 	if (ownerOnly && !config.owners.includes(message.author.id))
 		return tools.error(message, `${name} is set to owner only`);
-	if (guildOnly && message.channel.type !== 'text')
+	if (guildOnly && !['text', 'news'].includes(message.channel.type))
 		return tools.error(message, `${name} is set to guild only`);
 	if (requires && !message.member.permissions.has(requires))
 		return tools.error(message, `${name} requires the ${command.requires} permission`);
