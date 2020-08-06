@@ -10,7 +10,7 @@ module.exports = {
 	guildOnly: true,
 	async run(message, [amount]) {
 		// Get the amount of messages to delete, max it out at 100.
-		const msgs = Math.min(amount, 100);
+		const msgs = Math.min(amount, 99);
 
 		// Delete the messages.
 		await message.channel.bulkDelete(msgs + 1)
