@@ -3,7 +3,7 @@ const tools = require('../tools');
 module.exports = {
 	name: 'random',
 	aliases: ['rnd'],
-	description: "Generates a random number with a min/max range.",
+	description: "Generates a random number.",
 	usage: '<min> <max>',
 	minArgs: 2,
 	async run(message, [min, max]) {

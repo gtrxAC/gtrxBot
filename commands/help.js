@@ -4,7 +4,7 @@ const {owners} = require('../config.json');
 module.exports = {
 	name: 'help',
 	aliases: ['?'],
-	description: "Shows the command list or info on a command.",
+	description: "Shows the command list or command info.",
 	usage: '[command]',
 	async run(message, [commandName]) {
 		if (commandName) {
@@ -16,7 +16,7 @@ module.exports = {
 			if (!command) return tools.error(message, 'Invalid command');
 
 			// Format the command's info into an embed.
-			const embed = tools.embed(`${command.name} Command`)
+			const embed = tools.embed(`${command.name} command`)
 			let desc = '';
 			if (command.aliases) desc += `**Aliases:** ${command.aliases.join(', ')}\n`;
 			if (command.description) desc += `**Description:** ${command.description}\n`;
@@ -35,7 +35,7 @@ module.exports = {
 			// Add each command to the list, ignoring owner only commands.
 			message.client.commands.array().forEach(command => {
 				if (command.ownerOnly && !owners.includes(message.author.id)) return;
-				desc += `**${command.name}** ${command.description}\n`;
+				desc += `**${command.name}:** ${command.description}\n`;
 			})
 
 			// Send the embed.

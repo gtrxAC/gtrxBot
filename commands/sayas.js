@@ -2,7 +2,7 @@ const tools = require('../tools');
 
 module.exports = {
 	name: 'sayas',
-	description: "Says a message as a look-alike of another user.",
+	description: "Says a message as another user.",
 	usage: '<user> <message ...>',
 	minArgs: 2,
 	guildOnly: true,

@@ -3,7 +3,7 @@ const tools = require('../tools');
 module.exports = {
 	name: 'choose',
 	aliases: ['ch'],
-	description: "Chooses one of the given options randomly",
+	description: "Chooses one of the given options.",
 	usage: '<choice1> <choice2> [...]',
 	minArgs: 2,
 	async run(message, args) {

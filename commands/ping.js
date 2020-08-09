@@ -3,7 +3,7 @@ const tools = require('../tools');
 module.exports = {
 	name: 'ping',
 	aliases: ['pi'],
-	description: "Checks the bot's latency to Discord",
+	description: "Checks the bot's latency to Discord.",
 	async run(message, args) {
 		// Check message send ping.
 		const sendStart = Date.now();
