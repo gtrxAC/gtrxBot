@@ -25,11 +25,11 @@ module.exports = {
 			if (sniped.embed.title) embedData += `\n> **${sniped.embed.title}**`;
 			if (sniped.embed.description) embedData += `\n> ${sniped.embed.description.split('\n').join('\n> ')}`;
 			if (sniped.embed.footer) embedData += `\n> ${sniped.embed.footer.text}`;
-			embed.addField('Embed', embedData);
+			embed.addField('Embed', '\u200b' + embedData);
 		}
 
 		// If the sniped message had an image, add that to the embed.
-		if (sniped.attachments.size) embed.setImage(sniped.attachments.first().proxyURL);
+		if (sniped.attachments.size) embed.description += `\n[Attachment](${sniped.attachments.first().proxyURL})`;
 
 		// Send the embed.
 		return embed;
