@@ -21,11 +21,12 @@ module.exports = {
 
 		// If the sniped message had an embed, add that to the output.
 		if (sniped.embed) {
-			let embedData = '';
-			if (sniped.embed.title) embedData += `\n> **${sniped.embed.title}**`;
-			if (sniped.embed.description) embedData += `\n> ${sniped.embed.description.split('\n').join('\n> ')}`;
-			if (sniped.embed.footer) embedData += `\n> ${sniped.embed.footer.text}`;
-			embed.addField('Embed', '\u200b' + embedData);
+			let embedData = [];
+			if (sniped.embed.title) embedData.push(`**${sniped.embed.title}**`);
+			if (sniped.embed.description) embedData.push(sniped.embed.description);
+			if (sniped.embed.footer) embedData.push(sniped.embed.footer.text);
+			if (sniped.embed.image) embedData.push(`[Image](${sniped.embed.image.url})`);
+			embed.addField('Embed', embedData.length ? `>>> ${embedData.join('\n')}` : '\u200b');
 		}
 
 		// If the sniped message had an image, add that to the embed.
