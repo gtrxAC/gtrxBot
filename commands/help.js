@@ -21,7 +21,7 @@ module.exports = {
 			if (command.aliases) desc += `**Aliases:** ${command.aliases.join(', ')}\n`;
 			if (command.description) desc += `**Description:** ${command.description}\n`;
 			if (command.usage) desc += `**Usage:** ${command.usage}\n`;
-			if (command.requires) desc += `**Requires:** ${command.requires}\n\n`;
+			if (command.requires) desc += `**Requires:** ${command.requires}\n`;
 			if (command.guildOnly) desc += `This command is guild only.\n`;
 			if (command.ownerOnly) desc += `This command is owner only.`;
 

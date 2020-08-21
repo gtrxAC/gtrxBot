@@ -25,7 +25,7 @@ module.exports = {
 			if (sniped.embed.title) embedData.push(`**${sniped.embed.title}**`);
 			if (sniped.embed.description) embedData.push(sniped.embed.description);
 			if (sniped.embed.footer) embedData.push(sniped.embed.footer.text);
-			if (sniped.embed.image) embedData.push(`[Image](${sniped.embed.image.url})`);
+			if (sniped.embed.image) embedData.push(`[Image](${sniped.embed.image.proxyURL})`);
 			embed.addField('Embed', embedData.length ? `>>> ${embedData.join('\n')}` : '\u200b');
 		}
 
