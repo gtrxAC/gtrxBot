@@ -4,6 +4,7 @@
 
 module.exports = {
 	name: '',
+	category: '',
 	aliases: [],
 	description: "",
 	usage: '',
