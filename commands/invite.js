@@ -2,6 +2,7 @@ const tools = require('../tools');
 
 module.exports = {
 	name: 'invite',
+	category: 'Information',
 	aliases: ['support', 'inv'],
 	description: "Sends the bot and server invite link.",
 	async run(message, args) {

@@ -2,6 +2,7 @@ const tools = require('../tools');
 
 module.exports = {
 	name: 'choose',
+	category: 'Utility',
 	aliases: ['ch'],
 	description: "Chooses one of the given options.",
 	usage: '<choice1> <choice2> [...]',

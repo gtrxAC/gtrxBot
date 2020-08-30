@@ -2,6 +2,7 @@ const tools = require('../tools');
 
 module.exports = {
 	name: 'editsnipe',
+	category: 'Utility',
 	aliases: ['esn'],
 	description: "Reveals the last edited message.",
 	usage: '[#channel]',

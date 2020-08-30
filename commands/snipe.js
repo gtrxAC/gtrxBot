@@ -2,6 +2,7 @@ const tools = require('../tools');
 
 module.exports = {
 	name: 'snipe',
+	category: 'Utility',
 	aliases: ['sn'],
 	description: "Reveals the last deleted message.",
 	usage: '[#channel]',

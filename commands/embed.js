@@ -2,6 +2,7 @@ const tools = require('../tools');
 
 module.exports = {
 	name: 'embed',
+	category: 'Utility',
 	aliases: ['emb'],
 	description: "Creates a simple embed message.",
 	usage: '<title> ; [description] ; [footer] ; [image url]',

@@ -2,6 +2,7 @@ const tools = require('../tools');
 
 module.exports = {
 	name: 'random',
+	category: 'Utility',
 	aliases: ['rnd'],
 	description: "Generates a random number.",
 	usage: '<min> <max>',

@@ -2,6 +2,7 @@ const tools = require("../tools");
 
 module.exports = {
 	name: 'calc',
+	category: 'Utility',
 	aliases: ['math'],
 	description: "Calculates a mathematical expression.",
 	usage: '<expression>',

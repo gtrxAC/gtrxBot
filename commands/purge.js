@@ -2,6 +2,7 @@ const tools = require('../tools');
 
 module.exports = {
 	name: 'purge',
+	category: 'Moderation',
 	aliases: ['delete', 'pu'],
 	description: "Deletes multiple messages at once.",
 	usage: '<amount>',

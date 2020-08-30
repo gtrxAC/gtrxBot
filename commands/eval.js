@@ -2,6 +2,7 @@ const tools = require('../tools');
 
 module.exports = {
 	name: 'eval',
+	category: 'Owner Only',
 	aliases: ['ev'],
 	description: "Runs JavaScript code.",
 	usage: '<code ...>',
