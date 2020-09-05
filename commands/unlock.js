@@ -1,8 +1,4 @@
-// const tools = require('../tools');
-// const {} = require('discord.js');
-// const {} = require('../config.json');
-
-const tools = require("../tools");
+const tools = require('../tools');
 
 module.exports = {
 	name: 'unlock',
@@ -19,8 +15,10 @@ module.exports = {
 		// If -v was given, don't allow viewing the channel at all.
 		const overwrite = (args.includes('-v') ? {VIEW_CHANNEL: true} : {SEND_MESSAGES: true})
 
+		// Update the channel's permissions.
 		channel.updateOverwrite(message.guild.roles.everyone, overwrite);
 
+		// Send a confirmation message.
 		return tools.embed('Success')
 		.setDescription(`Unlocked ${channel}`);
 	}
