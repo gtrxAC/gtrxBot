@@ -31,7 +31,7 @@ module.exports = {
 		}
 
 		// If the sniped message had an image, add that to the embed.
-		if (sniped.attachments.size) embed.description += `\n[Attachment](${sniped.attachments.first().proxyURL})`;
+		if (sniped.attachment) embed.description += `\n[Attachment](${sniped.attachment.proxyURL})`;
 
 		// Send the embed.
 		return embed;
