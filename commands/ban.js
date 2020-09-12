@@ -24,11 +24,11 @@ module.exports = {
 		|| m.displayName.startsWith(user));
 		
 		// If no user was found, exit.
-		if (!target) return tools.error(message, 'Invalid user or no user mentioned');
+		if (!target) throw new Error('Invalid user or no user mentioned');
 
 		// If the user's top role isn't higher than the target's, exit.
 		if (message.member.roles.highest.position <= target.roles.highest.position)
-			return tools.error(message, 'You cannot ban this user.')
+			throw new Error('You cannot ban this user.')
 
 		// Ban the user and send a confirmation or error message.
 		await target.ban({
@@ -40,7 +40,7 @@ module.exports = {
 			.setDescription(`Banned ${target}`));
 		})
 		.catch(err => {
-			tools.error(message, `Failed to ban - make sure I have permission.`);
+			throw new Error(`Failed to ban - make sure I have permission.`);
 		})
 	}
 }

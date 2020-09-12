@@ -12,7 +12,7 @@ module.exports = {
 
 		// Don't allow evaluating anything other than mathematical expressions.
 		if (/[^0-9+\-/*<>=!&|^()]+/g.test(expression))
-			return tools.error(message, 'Syntax error');
+			throw new Error('Syntax error');
 
 		// Evaluate the expression and return the result.
 		return tools.embed('Success')

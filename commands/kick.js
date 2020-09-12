@@ -20,11 +20,11 @@ module.exports = {
 		|| m.displayName.startsWith(user));
 		
 		// If no user was found, exit.
-		if (!target) return tools.error(message, 'Invalid user or no user mentioned');
+		if (!target) throw new Error('Invalid user or no user mentioned');
 
 		// If the user's top role isn't higher than the target's, exit.
 		if (message.member.roles.highest.position <= target.roles.highest.position)
-			return tools.error(message, 'You cannot kick this user.')
+			throw new Error('You cannot kick this user.')
 
 		// Kick the user and send a confirmation or error message.
 		await target.kick(`${message.author.tag}: ${reason.join(' ')}`)
@@ -33,7 +33,7 @@ module.exports = {
 			.setDescription(`Kicked ${target}`));
 		})
 		.catch(err => {
-			tools.error(message, `Failed to kick - make sure I have permission.`);
+			throw new Error(`Failed to kick - make sure I have permission.`);
 		})
 	}
 }

@@ -15,7 +15,7 @@ module.exports = {
 		|| m.displayName.startsWith(user));
 
 		// If no user was found, exit.
-		if (!target) return tools.error(message, 'Invalid user or no user mentioned');
+		if (!target) throw new Error('Invalid user or no user mentioned');
 		
 		// Create a webhook for sending the message.
 		avatar = target.user.avatarURL({format: 'png', dynamic: true});

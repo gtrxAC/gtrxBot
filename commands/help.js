@@ -14,7 +14,7 @@ module.exports = {
 			|| message.client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
 			// If no command was found, exit.
-			if (!command) return tools.error(message, 'Invalid command');
+			if (!command) throw new Error('Invalid command');
 
 			// Format the command's info into an embed.
 			const embed = tools.embed(`${command.name} command`)

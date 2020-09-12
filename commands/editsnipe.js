@@ -14,7 +14,7 @@ module.exports = {
 		const sniped = message.client.editSnipeMap.get(channel.id);
 
 		// If nothing was found, exit.
-		if (!sniped) return tools.error(message, 'No message found');
+		if (!sniped) throw new Error('No message found');
 
 		// Send an embed with the editsnipe data.
 		return tools.embed(`${sniped.author} said:`)

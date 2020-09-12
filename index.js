@@ -26,7 +26,7 @@ client.on('message', async message => {
 
 	// Separate the message content into the command and arguments.
 	const args = message.content.slice(prefix.length).split(' ');
-	const commandName = args.shift().toLowerCase().trim();
+	const commandName = args.shift().toLowerCase();
 	const command = client.commands.get(commandName)
 		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
@@ -73,7 +73,7 @@ client.on('message', async message => {
 	client.snipeMap.set(message.channel.id, {
 		author: message.author.tag,
 		content: message.content,
-		attachments: message.attachments.first(),
+		attachment: message.attachments.first(),
 		embed: message.embeds[0]
 	})
 })
