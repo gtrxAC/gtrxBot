@@ -10,6 +10,11 @@ the 3rd iteration of nobody's favorite discord utility bot
 The prefix is `gb`, for example `gbpurge` or `gbpu` to purge.
 
 
+### Fun
+* `reddit <subreddit>`
+Gets a random hot post from the specified subreddit.
+
+
 ### Utility
 * `calc <expression>`
 Calculates a mathematical expression.
@@ -69,8 +74,17 @@ Runs JavaScript code.
 
 ## Self-hosting
 1. Clone the repository.
-2. Install the dependencies. `npm i discord.js`
-3. Create a token.txt file in the root directory.
-4. Paste your bot token in the token.txt file. [Get a token here](https://discord.com/developers)
-5. Change the owner ID in config.json to your user ID. [How to get your ID](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-)
+2. Install the dependencies. `npm i discord.js snoowrap` - If you don't need the `reddit` command, you only need `discord.js`
+3. Create a token.txt file and paste your bot token there. [Get a token here](https://discord.com/developers)
+4. Change the owner ID in config.json to your user ID. [How to get your ID](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-)
+5. If you want to use the `reddit` command, create a reddit-auth.json file and paste your credientials: [Get credientials here](https://www.reddit.com/prefs/apps)
+```json
+{
+	"userAgent": "nodejs:yourbotname:v1.0 (by /u/yourusername)",
+	"clientId": "your client id",
+	"clientSecret": "your client secret",
+	"username": "yourusername",
+	"password": "password123"
+}
+```
 6. Run the bot. `node index.js`
