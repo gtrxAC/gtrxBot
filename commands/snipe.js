@@ -34,6 +34,6 @@ module.exports = {
 		if (sniped.attachment) embed.description += `\n[Attachment](${sniped.attachment.proxyURL})`;
 
 		// Send the embed.
-		return embed;
+		return embed.setTimestamp(sniped.ts);
 	}
 }
