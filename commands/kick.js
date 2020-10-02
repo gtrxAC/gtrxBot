@@ -14,7 +14,7 @@ module.exports = {
 		if (!reason.length) reason = ['(no', 'reason', 'specified)'];
 
 		// Find the target user from mentions, or find by nick/username.
-		let target = message.mentions.members.first()
+		const target = message.mentions.members.first()
 		|| message.guild.members.cache.find(m => m.user.id === user
 		|| m.user.tag.startsWith(user)
 		|| m.displayName.startsWith(user));

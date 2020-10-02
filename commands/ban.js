@@ -15,10 +15,10 @@ module.exports = {
 
 		// If the last arg is a number, use it as the number of days to delete messages.
 		const lastArgNumber = parseInt(reason[reason.length - 1]);
-		if (isFinite(lastArgNumber)) days = parseInt(reason.pop());
+		const days = (isFinite(lastArgNumber) ? parseInt(reason.pop()) : 0);
 		
 		// Find the target user from mentions, or find by nick/username.
-		let target = message.mentions.members.first()
+		const target = message.mentions.members.first()
 		|| message.guild.members.cache.find(m => m.user.id === user
 		|| m.user.tag.startsWith(user)
 		|| m.displayName.startsWith(user));
@@ -33,7 +33,7 @@ module.exports = {
 		// Ban the user and send a confirmation or error message.
 		await target.ban({
 			reason: `${message.author.tag}: ${reason.join(' ')}`,
-			days: days | 0
+			days: days || 0
 		})
 		.then(() => {
 			message.channel.send(tools.embed('Success')
