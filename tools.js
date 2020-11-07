@@ -1,5 +1,7 @@
 const {MessageEmbed} = require('discord.js');
+const { reverse } = require('dns');
 const config = require('./config.json');
+const urlregex = require('./urlregex');
 
 module.exports = {
 	embed(title) {
@@ -22,10 +24,10 @@ module.exports = {
 		const minutes = Math.floor(timeLeft / 60000) - (days * 1440) - (hours * 60);
 		const seconds = Math.floor(timeLeft / 1000) - (days * 86400) - (hours * 3600) - (minutes * 60);
 		string = '';
-		if (days) string = string + `${days}d `;
-		if (hours) string = string + `${hours}h `;
-		if (minutes) string = string + `${minutes}min `;
-		if (seconds) string = string + `${seconds}sec`;
+		if (days) string += `${days}d `;
+		if (hours) string += `${hours}h `;
+		if (minutes) string += `${minutes}min `;
+		if (seconds) string += `${seconds}sec`;
 		if (!string.length) string = `${timeLeft}ms`;
 		return string;
 	},
@@ -33,5 +35,29 @@ module.exports = {
 	setStatus(client) {
 		const guildCount = client.guilds.cache.size;
 		client.user.setActivity(`for ${config.prefix}help in ${guildCount} guilds`, {type: 'WATCHING'});
+	},
+
+	async fetchImage(message) {
+		// attached to this message
+		if (message.attachments.size) {
+			return message.attachments.first().url;
+		} else {
+			
+			// attached to a previous message
+			const messages = await message.channel.messages.fetch({limit: 20});
+			const attmsg = messages.find(m => m.attachments.size); 
+			if (attmsg) {
+				return attmsg.attachments.first().url;
+			} else {
+
+				// link in this or previous message
+				const linkmsg = messages.find(m => urlregex.test(m.content));
+				if (linkmsg) {
+					return linkmsg.content.match(urlregex)[0];
+				} else {
+					throw new Error('No image found');
+				}
+			}
+		}
 	}
 }

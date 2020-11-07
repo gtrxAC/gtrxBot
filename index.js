@@ -99,5 +99,4 @@ client.on('message', async message => {
 })
 
 // Log in using the token file.
-const token = fs.readFileSync('token.txt').toString();
-client.login(token);
+client.login(require('./token.json'));

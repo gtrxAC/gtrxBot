@@ -38,6 +38,14 @@ Says a message as a look-alike (webhook) of another user.
 Reveals the last deleted message in the specified or current channel. This can also snipe images and embeds.
 
 
+### Image
+* `avatar [@user]` / `av`
+Gets your or the specified user's avatar.
+
+* `scale <width> <height> [noSmoothing] [image url]` / `sc`
+Resizes the specified image.
+
+
 ### Moderation
 * `ban <user> [reason] [deletedays]` / `b`
 Bans a user from the server.
@@ -74,7 +82,9 @@ Runs JavaScript code.
 
 ## Self-hosting
 1. Clone the repository.
-2. Install the dependencies. `npm i discord.js snoowrap` - If you don't need the `reddit` command, you only need `discord.js`
+2. Install the dependencies. `npm i discord.js snoowrap canvas`
+* `snoowrap` is used for the `reddit` command.
+* `canvas` is used for some image commands.
 3. Create a token.txt file and paste your bot token there. [Get a token here](https://discord.com/developers)
 4. Change the owner ID in config.json to your user ID. [How to get your ID](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-)
 5. If you want to use the `reddit` command, create a reddit-auth.json file and paste your credientials: [Get credientials here](https://www.reddit.com/prefs/apps)

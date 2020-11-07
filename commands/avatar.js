@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'avatar',
-	category: 'Utility',
+	category: 'Image',
 	aliases: ['av', 'pfp'],
 	description: "Gets your or another user's avatar.",
 	usage: '[user]',

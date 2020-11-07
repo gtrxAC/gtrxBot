@@ -11,7 +11,7 @@ module.exports = {
 		expression = expression.join(' ');
 
 		// Don't allow evaluating anything other than mathematical expressions.
-		if (/[^0-9+\-/*<>=!&|^()]+/g.test(expression))
+		if (/[^0-9.+\-/*<>=!&|^()]+/g.test(expression))
 			throw new Error('Syntax error');
 
 		// Evaluate the expression and return the result.
