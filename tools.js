@@ -1,9 +1,9 @@
 const {MessageEmbed} = require('discord.js');
-const { reverse } = require('dns');
 const config = require('./config.json');
-const urlregex = require('./urlregex');
 
 module.exports = {
+	urlregex: /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[.\!\/\\w]*))?)/i,
+
 	embed(title) {
 		return new MessageEmbed()
 		.setTitle(title)
@@ -51,13 +51,17 @@ module.exports = {
 			} else {
 
 				// link in this or previous message
-				const linkmsg = messages.find(m => urlregex.test(m.content));
+				const linkmsg = messages.find(m => this.urlregex.test(m.content));
 				if (linkmsg) {
-					return linkmsg.content.match(urlregex)[0];
+					return linkmsg.content.match(this.urlregex)[0];
 				} else {
 					throw new Error('No image found');
 				}
 			}
 		}
+	},
+
+	removePings(string) {
+		return string.replace(/<@&\d+>|@everyone|@here/g, `(mention removed)`);
 	}
 }
