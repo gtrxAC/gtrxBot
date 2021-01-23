@@ -10,9 +10,6 @@ module.exports = {
 	minArgs: 1,
 	guildOnly: true,
 	async run(message, [user, ...reason]) {
-		// Use a placeholder if no reason was given.
-		if (!reason.length) reason = ['(no', 'reason', 'specified)'];
-
 		// Find the target user from mentions, or find by nick/username.
 		const target = message.mentions.members.first()
 		|| message.guild.members.cache.find(m => m.user.id === user
@@ -27,13 +24,13 @@ module.exports = {
 			throw new Error('You cannot kick this user.')
 
 		// Kick the user and send a confirmation or error message.
-		await target.kick(`${message.author.tag}: ${reason.join(' ')}`)
+		target.kick(`${message.author.tag}: ${reason.join(' ')}`)
 		.then(() => {
 			message.channel.send(tools.embed('Success')
 			.setDescription(`Kicked ${target}`));
 		})
-		.catch(err => {
-			throw new Error(`Failed to kick - make sure I have permission.`);
-		})
+		.catch(e => {
+			tools.error(message, e);
+		});
 	}
 }

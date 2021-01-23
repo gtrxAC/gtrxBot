@@ -10,9 +10,6 @@ module.exports = {
 	minArgs: 1,
 	guildOnly: true,
 	async run(message, [user, ...reason]) {
-		// Use a placeholder if no reason was given.
-		if (!reason.length) reason = ['(no', 'reason', 'specified)'];
-
 		// If the last arg is a number, use it as the number of days to delete messages.
 		const lastArgNumber = parseInt(reason[reason.length - 1]);
 		const days = (isFinite(lastArgNumber) ? parseInt(reason.pop()) : 0);
@@ -31,7 +28,7 @@ module.exports = {
 			throw new Error('You cannot ban this user.')
 
 		// Ban the user and send a confirmation or error message.
-		await target.ban({
+		target.ban({
 			reason: `${message.author.tag}: ${reason.join(' ')}`,
 			days: days || 0
 		})
@@ -39,8 +36,8 @@ module.exports = {
 			message.channel.send(tools.embed('Success')
 			.setDescription(`Banned ${target}`));
 		})
-		.catch(err => {
-			throw new Error(`Failed to ban - make sure I have permission.`);
-		})
+		.catch(e => {
+			tools.error(message, e);
+		});
 	}
 }
