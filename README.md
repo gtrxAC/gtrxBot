@@ -11,71 +11,68 @@ The prefix is `gb`, for example `gbpurge` or `gbpu` to purge.
 
 
 ### Fun
-* `reddit <subreddit>`
+* `reddit/r <subreddit>`<br>
 Gets a random hot post from the specified subreddit.
 
 
 ### Utility
-* `calc <expression>`
-Calculates a mathematical expression.
+* `calc/c/math <expression>`<br>
+Calculates a mathematical expression. [Supported operators](https://gist.github.com/gtrxAC/b51c63edaae85955c6327fadfd359b95)
 
-* `choose <choice1>, <choice2>, [...]`
+* `choose/ch <choice1>, <choice2>, [...]`<br>
 Chooses one of the given choices randomly. The options must be separated by commas.
 
-* `editsnipe [#channel]` / `esn`
-Reveals the last edited message in the specified or current channel.
+* `editsnipe/esn [#channel]`<br>
+Reveals the last edited message in the specified or current channel. Edited messages are stored until the bot restarts.
 
-* `embed <title> ; [description] ; [footer] ; [image url]` / `emb`
+* `embed/emb <title> ; [description] ; [footer] ; [image url]`<br>
 Creates an embed message. The image can also be specified through an attachment.
 
-* `random <min> <max>` / `rnd`
+* `random/rnd <min> <max>`<br>
 Generates a random number with the specified lower and upper range.
 
-* `sayas <user> <message ...>`
+* `sayas/sa <user> <message ...>`<br>
 Says a message as a look-alike (webhook) of another user.
 
-* `snipe [#channel]` / `sn`
-Reveals the last deleted message in the specified or current channel. This can also snipe images and embeds.
+* `snipe/sn [#channel]`<br>
+Reveals the last deleted message in the specified or current channel. This can also snipe images and embeds. Deleted messages are stored until the bot restarts.
 
 
 ### Image
-* `avatar [@user]` / `av`
+* `avatar/av [@user]`<br>
 Gets your or the specified user's avatar.
 
-* `scale <width> <height> [noSmoothing] [image url]` / `sc`
-Resizes the specified image.
+* `scale/sc <width> <height> [noSmoothing] [image url]`<br>
+Resizes the specified image. If noSmoothing is specified, the image will use nearest-neighbor scaling, making the result look pixelated instead of blurred.
 
 
 ### Moderation
-* `ban <user> [reason] [deletedays]` / `b`
-Bans a user from the server.
+* `ban/b <user> [reason] [deletedays]`<br>
+Bans a user from the server. If the last word of the reason is a number, that many days of messages are deleted.
 
-* `kick <user> [reason]` / `k`
+* `kick/k <user> [reason]`<br>
 Kicks a user from the server.
 
-* `lock [-v] [#channel]` / `lk`
-Locks others from sending messages to the channel. If -v is specified, this locks others from seeing the channel at all.
+* `lock/lk/unlock/ul [-v] [#channel]`<br>
+Locks others from sending messages to the specified channel. If no channel is specified, the current channel is used. If -v is specified, this hides the channel entirely. If the channel is already locked/hidden, this command will unlock/show it.
 
-* `purge <amount>` / `pu`
+* `purge/pu/delete <amount>`<br>
 Deletes the specified amount of messages.
-
-* `unlock [-v] [#channel]` / `ul`
-Allows others to send messages to this channel. If -v is specified, this allows others to view the channel.
 
 
 ### Information
-* `help [command]` / `?`
+* `help/? [command]`<br>
 Shows the command list or info on a command.
 
-* `invite` / `support` / `inv`
+* `invite/support/inv`<br>
 Sends you the invite link for the bot.
 
-* `ping` / `pi`
-Checks the bot's latency to Discord.
+* `ping/pi [-t]`<br>
+Checks the bot's latency to Discord. If -t is specified, the bot will run a short test of sending, editing, reacting and deleting messages and time it.
 
 
 ### Owner Only
-* `eval <code ...>` / `ev`
+* `eval/ev <code ...>`<br>
 Runs JavaScript code. 
 
 

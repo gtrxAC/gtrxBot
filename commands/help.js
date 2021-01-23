@@ -35,7 +35,7 @@ module.exports = {
 
 			// Create a command list for each command category.
 			categories.forEach(category => {
-				let list = '';
+				let list = "See a more detailed list [here](https://github.com/gtrxAC/gtrxBot/blob/master/README.md).";
 				message.client.commands.forEach(command => {
 					if (command.category != category) return;
 					list += `**${command.name}:** ${command.description}\n`

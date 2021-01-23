@@ -15,7 +15,11 @@ module.exports = {
 		const choice = args[Math.floor(Math.random() * args.length)];
 
 		// Send an embed with the choice.
-		return tools.embed('Random Choice')
-		.setDescription(`**Choices:** \`${args.join('` `')}\`\n**Result:** \`${choice}\``);
+		if (args.length > 2) {
+			return tools.embed('Random Choice')
+			.setDescription(`**Choices:** \`${args.join('` `')}\`\n**Result:** \`${choice}\``);
+		} else {
+			return tools.error("Only one choice specified (try separating by commas)");
+		}
 	}
 }

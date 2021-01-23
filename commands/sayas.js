@@ -3,6 +3,7 @@ const tools = require('../tools');
 module.exports = {
 	name: 'sayas',
 	category: 'Utility',
+	aliases: ['sa'],
 	description: "Says a message as another user.",
 	usage: '<user> <message ...>',
 	minArgs: 2,
