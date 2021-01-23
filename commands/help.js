@@ -31,11 +31,12 @@ module.exports = {
 			return embed.setDescription(desc);
 		} else {
 			// If no command was specified, show every command in a list.
-			const embed = tools.embed(`Command List`);
+			const embed = tools.embed(`Command List`)
+			.setDescription("See a more detailed list [here](https://github.com/gtrxAC/gtrxBot/blob/master/README.md#command-list).");
 
 			// Create a command list for each command category.
 			categories.forEach(category => {
-				let list = "See a more detailed list [here](https://github.com/gtrxAC/gtrxBot/blob/master/README.md).";
+				let list = '';
 				message.client.commands.forEach(command => {
 					if (command.category != category) return;
 					list += `**${command.name}:** ${command.description}\n`
