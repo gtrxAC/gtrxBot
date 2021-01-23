@@ -19,7 +19,7 @@ module.exports = {
 			return tools.embed('Random Choice')
 			.setDescription(`**Choices:** \`${args.join('` `')}\`\n**Result:** \`${choice}\``);
 		} else {
-			return tools.error("Only one choice specified (try separating by commas)");
+			return tools.error(message, "Only one choice specified (try separating by commas)");
 		}
 	}
 }
