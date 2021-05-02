@@ -12,14 +12,14 @@ module.exports = {
 	async run(message, [user, ...reason]) {
 		// If the last arg is a number, use it as the number of days to delete messages.
 		const lastArgNumber = parseInt(reason[reason.length - 1]);
-		const days = (isFinite(lastArgNumber) ? parseInt(reason.pop()) : 0);
-		
+		const days = isFinite(lastArgNumber) ? parseInt(reason.pop()) : 0;
+
 		// Find the target user from mentions, or find by nick/username.
 		const target = message.mentions.members.first()
-		|| message.guild.members.cache.find(m => m.user.id === user
-		|| m.user.tag.startsWith(user)
-		|| m.displayName.startsWith(user));
-		
+			|| message.guild.members.cache.find(m => m.user.id === user
+			|| m.user.tag.startsWith(user)
+			|| m.displayName.startsWith(user));
+
 		// If no user was found, exit.
 		if (!target) throw new Error('Invalid user or no user mentioned');
 
@@ -34,7 +34,7 @@ module.exports = {
 		})
 		.then(() => {
 			message.channel.send(tools.embed('Success')
-			.setDescription(`Banned ${target}`));
+				.setDescription(`Banned ${target}`));
 		})
 		.catch(e => {
 			tools.error(message, e);

@@ -1,4 +1,4 @@
-# gtrxBot3
+# gtrxBot
 
 the 3rd iteration of nobody's favorite discord utility bot
 
@@ -82,16 +82,13 @@ Runs JavaScript code.
 2. Install the dependencies. `npm i discord.js snoowrap canvas`
 * `snoowrap` is used for the `reddit` command.
 * `canvas` is used for some image commands.
-3. Create a token.json file and paste your bot token there, surrounded by quotes. [Create a bot account here](https://discord.com/developers)
+3. Set the `TOKEN` environment variable to your bot token. [Create a bot account here](https://discord.com/developers)
+* You can use a startup script or `dotenv` to set up environment variables.
 4. Change the owner ID in config.json to your user ID. [How to get your ID](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-)
-5. If you want to use the `reddit` command, create a reddit-auth.json file and paste your credientials: [Get credientials here](https://www.reddit.com/prefs/apps)
-```json
-{
-	"userAgent": "nodejs:yourbotname:v1.0 (by /u/yourusername)",
-	"clientId": "your client id",
-	"clientSecret": "your client secret",
-	"username": "yourusername",
-	"password": "password123"
-}
-```
+5. If you want to use the `reddit` command, create a [Reddit API](https://www.reddit.com/prefs/apps) application and set the following environment variables:
+* `REDDIT_USER_AGENT`
+* `REDDIT_CLIENT_ID`
+* `REDDIT_CLIENT_SECRET`
+* `REDDIT_USERNAME`
+* `REDDIT_PASSWORD`
 6. Run the bot. `node index.js`

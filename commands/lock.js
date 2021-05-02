@@ -18,16 +18,16 @@ module.exports = {
 
 		// Get the channel's permissions.
 		const perm = channel.permissionOverwrites.has(everyone)
-		&& channel.permissionOverwrites.get(everyone).deny.has(prop);
+			&& channel.permissionOverwrites.get(everyone).deny.has(prop);
 
 		// Toggle the permission.
 		channel.updateOverwrite(everyone, {[prop]: perm})
-		.then(() => {
-			message.channel.send(tools.embed('Success')
-			.setDescription(`${perm ? 'Unlocked' : 'Locked'} ${channel}`));
-		})
-		.catch(e => {
-			tools.error(message, e);
-		});
+			.then(() => {
+				message.channel.send(tools.embed('Success')
+				.setDescription(`${perm ? 'Unlocked' : 'Locked'} ${channel}`));
+			})
+			.catch(e => {
+				tools.error(message, e);
+			});
 	}
 }

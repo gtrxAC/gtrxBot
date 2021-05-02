@@ -1,7 +1,18 @@
 const snoowrap = require('snoowrap');
 const tools = require('../tools');
-const auth = require('../reddit-auth.json');
-const reddit = new snoowrap(auth);
+
+if (!process.env.REDDIT_USER_AGENT) {
+	const e = new Error(`Environment variables not set, see README for details.`);
+	throw e;
+}
+
+const reddit = new snoowrap({
+	userAgent: process.env.REDDIT_USER_AGENT,
+	clientId: process.env.REDDIT_CLIENT_ID,
+	clientSecret: process.env.REDDIT_CLIENT_SECRET,
+	username: process.env.REDDIT_USERNAME,
+	password: process.env.REDDIT_PASSWORD
+});
 
 module.exports = {
 	name: 'reddit',
@@ -11,7 +22,7 @@ module.exports = {
 	usage: '<subreddit>',
 	minArgs: 1,
 	cooldown: 4000,
-	async run(message, [subreddit]) {
+	async run(_, [subreddit]) {
 		// Get the hot posts from the subreddit.
 		const posts = await reddit.getSubreddit(subreddit).getHot()
 
@@ -24,8 +35,8 @@ module.exports = {
 
 		// Send an embed with the post's data.
 		return tools.embed(post.title)
-		.setAuthor(`u/${post.author.name}`)
-		.setURL(`https://reddit.com${post.permalink}`)
-		.setImage(post.url);
+			.setAuthor(`u/${post.author.name}`)
+			.setURL(`https://reddit.com${post.permalink}`)
+			.setImage(post.url);
 	}
 }

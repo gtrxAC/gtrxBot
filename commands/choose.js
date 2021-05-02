@@ -14,12 +14,14 @@ module.exports = {
 		// Choose a random choice from the arguments.
 		const choice = args[Math.floor(Math.random() * args.length)];
 
-		// Send an embed with the choice.
-		if (args.length > 2) {
-			return tools.embed('Random Choice')
-			.setDescription(`**Choices:** \`${args.join('` `')}\`\n**Result:** \`${choice}\``);
-		} else {
+		if (args.length < 2)
 			return tools.error(message, "Only one choice specified (try separating by commas)");
-		}
+
+		// Send an embed with the choice.
+		return tools.embed('Random Choice')
+			.setDescription(
+				`**Choices:** \`${args.join('` `')}\`\n` +
+				`**Result:** \`${choice}\``
+			);
 	}
 }

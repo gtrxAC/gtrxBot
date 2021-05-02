@@ -7,7 +7,7 @@ module.exports = {
 	description: "Calculates a mathematical expression.",
 	usage: '<expression>',
 	minArgs: 1,
-	async run(message, [...expression]) {
+	async run(_, [...expression]) {
 		expression = expression.join(' ');
 
 		// Don't allow evaluating anything other than mathematical expressions.
@@ -16,6 +16,6 @@ module.exports = {
 
 		// Evaluate the expression and return the result.
 		return tools.embed('Success')
-		.setDescription(eval(expression));
+			.setDescription(eval(expression));
 	}
 }

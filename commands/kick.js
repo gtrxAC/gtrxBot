@@ -12,10 +12,10 @@ module.exports = {
 	async run(message, [user, ...reason]) {
 		// Find the target user from mentions, or find by nick/username.
 		const target = message.mentions.members.first()
-		|| message.guild.members.cache.find(m => m.user.id === user
-		|| m.user.tag.startsWith(user)
-		|| m.displayName.startsWith(user));
-		
+			|| message.guild.members.cache.find(m => m.user.id === user
+			|| m.user.tag.startsWith(user)
+			|| m.displayName.startsWith(user));
+
 		// If no user was found, exit.
 		if (!target) throw new Error('Invalid user or no user mentioned');
 
@@ -25,12 +25,12 @@ module.exports = {
 
 		// Kick the user and send a confirmation or error message.
 		target.kick(`${message.author.tag}: ${reason.join(' ')}`)
-		.then(() => {
-			message.channel.send(tools.embed('Success')
-			.setDescription(`Kicked ${target}`));
-		})
-		.catch(e => {
-			tools.error(message, e);
-		});
+			.then(() => {
+				message.channel.send(tools.embed('Success')
+					.setDescription(`Kicked ${target}`));
+			})
+			.catch(e => {
+				tools.error(message, e);
+			});
 	}
 }

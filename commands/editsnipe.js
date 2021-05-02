@@ -18,7 +18,7 @@ module.exports = {
 
 		// Send an embed with the editsnipe data.
 		return tools.embed(`${sniped.author} said:`)
-		.addField('Old Message', '\u200b' + sniped.oldContent)
-		.addField('New Message', '\u200b' + sniped.newContent);
+			.addField('Old Message', '\u200b' + sniped.oldContent)
+			.addField('New Message', '\u200b' + sniped.newContent);
 	}
 }

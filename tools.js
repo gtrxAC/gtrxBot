@@ -12,7 +12,8 @@ module.exports = {
 
 	error(message, error) {
 		const embed = this.embed('Error')
-		.setDescription(error);
+			.setDescription(error);
+
 		message.channel.send(embed);
 		return false;
 	},
@@ -23,18 +24,20 @@ module.exports = {
 		const hours = Math.floor(timeLeft / 3600000) - (days * 24);
 		const minutes = Math.floor(timeLeft / 60000) - (days * 1440) - (hours * 60);
 		const seconds = Math.floor(timeLeft / 1000) - (days * 86400) - (hours * 3600) - (minutes * 60);
+
 		string = '';
 		if (days) string += `${days}d `;
 		if (hours) string += `${hours}h `;
 		if (minutes) string += `${minutes}min `;
 		if (seconds) string += `${seconds}sec`;
-		if (!string.length) string = `${timeLeft}ms`;
+
+		if (!string) string = `${timeLeft}ms`;
 		return string;
 	},
 
 	setStatus(client) {
 		const guildCount = client.guilds.cache.size;
-		client.user.setActivity(`for ${config.prefix}help in ${guildCount} guilds`, {type: 'WATCHING'});
+		client.user.setActivity(`for ${config.prefix}help in ${guildCount} guilds`, { type: 'WATCHING' });
 	},
 
 	async fetchImage(message) {
@@ -42,14 +45,12 @@ module.exports = {
 		if (message.attachments.size) {
 			return message.attachments.first().url;
 		} else {
-			
 			// attached to a previous message
 			const messages = await message.channel.messages.fetch({limit: 20});
 			const attmsg = messages.find(m => m.attachments.size); 
 			if (attmsg) {
 				return attmsg.attachments.first().url;
 			} else {
-
 				// link in this or previous message
 				const linkmsg = messages.find(m => this.urlregex.test(m.content));
 				if (linkmsg) {
@@ -61,7 +62,7 @@ module.exports = {
 		}
 	},
 
-	removePings(string) {
+	sanitize(string) {
 		return string.replace(/<@&\d+>|@everyone|@here/g, `(mention removed)`);
 	}
 }

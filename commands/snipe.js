@@ -6,7 +6,7 @@ module.exports = {
 	aliases: ['sn'],
 	description: "Reveals the last deleted message.",
 	usage: '[#channel]',
-	async run(message, args) {
+	async run(message) {
 		// If a channel was mentioned, use that, otherwise use the current channel.
 		const channel = message.mentions.channels.first() || message.channel;
 
@@ -18,7 +18,7 @@ module.exports = {
 
 		// Create an embed with the snipe data.
 		const embed = tools.embed(`${sniped.author} said:`)
-		.setDescription(sniped.content);
+			.setDescription(sniped.content);
 
 		// If the sniped message had an embed, add that to the output.
 		if (sniped.embed) {
@@ -27,6 +27,7 @@ module.exports = {
 			if (sniped.embed.description) embedData.push(sniped.embed.description);
 			if (sniped.embed.footer) embedData.push(sniped.embed.footer.text);
 			if (sniped.embed.image) embedData.push(`[Image](${sniped.embed.image.proxyURL})`);
+
 			embed.addField('Embed', embedData.length ? `>>> ${embedData.join('\n')}` : '\u200b');
 		}
 

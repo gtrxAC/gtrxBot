@@ -1,26 +1,28 @@
 // Load the required modules.
-const {Client, Collection} = require('discord.js')
-, fs = require('fs')
-, config = require('./config.json')
-, tools = require('./tools')
-, client = new Client()
-, cooldowns = new Collection();
+const { Client, Collection } = require('discord.js');
+const fs = require('fs');
+const config = require('./config.json');
+const tools = require('./tools');
+const client = new Client();
+const cooldowns = new Collection();
+
 client.commands = new Collection();
 client.snipeMap = new Map();
 client.editSnipeMap = new Map();
 
 // Load the command files from ./commands/
-fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
-.forEach(file => {
-	const command = require(`./commands/${file}`);
-	client.commands.set(command.name, command);
-	cooldowns.set(command.name, new Collection());
-})
+fs.readdirSync('./commands')
+	.filter(file => file.endsWith('.js'))
+	.forEach(file => {
+		const command = require(`./commands/${file}`);
+		client.commands.set(command.name, command);
+		cooldowns.set(command.name, new Collection());
+	})
 
 // Message handler, see https://discordjs.guide/command-handling/
 client.on('message', async message => {
 	// Ignore bot and non-command messages.
-	const {prefix} = config;
+	const { prefix } = config;
 	if (!message.content.startsWith(prefix)) return;
 	if (message.author.bot) return;
 
@@ -33,11 +35,23 @@ client.on('message', async message => {
 	// Exit if no command was found.
 	if (!command) return;
 
+	const {
+		name,
+		usage,
+		cooldown = 2000,
+		minArgs = 0,
+		ownerOnly,
+		guildOnly,
+		requires,
+		run
+	} = command;
+
 	// If the user is on cooldown, exit.
-	const {name, usage, cooldown = 2000, minArgs = 0, ownerOnly, guildOnly, requires, run} = command;
 	const timestamps = cooldowns.get(name);
+
 	if (timestamps.has(message.author.id)) {
 		const expirationTime = timestamps.get(message.author.id) + cooldown;
+
 		if (Date.now() < expirationTime) {
 			const timeLeft = tools.timer(expirationTime);
 			return tools.error(message, `This command is in cooldown for ${timeLeft}`);
@@ -47,10 +61,13 @@ client.on('message', async message => {
 	// If the command's requirements aren't met, exit.
 	if (args.length < minArgs)
 		return tools.error(message, `${name} requires at least ${minArgs} args: \`${usage}\``);
+
 	if (ownerOnly && !config.owners.includes(message.author.id))
 		return tools.error(message, `${name} is set to owner only`);
+
 	if (guildOnly && !['text', 'news'].includes(message.channel.type))
 		return tools.error(message, `${name} is set to guild only`);
+
 	if (requires && !message.member.permissions.has(requires))
 		return tools.error(message, `${name} requires the ${command.requires} permission`);
 
@@ -89,8 +106,8 @@ client.on('message', async message => {
 })
 
 // If the amount of accessible guilds changes, update the status.
-.on('guildCreate', guild => tools.setStatus(client))
-.on('guildDelete', guild => tools.setStatus(client))
+.on('guildCreate', () => tools.setStatus(client))
+.on('guildDelete', () => tools.setStatus(client))
 
 // When the bot logs in, set its status.
 .on('ready', () => {
@@ -98,5 +115,4 @@ client.on('message', async message => {
 	console.log('ready!');
 })
 
-// Log in using the token file.
-client.login(require('./token.json'));
+client.login(process.env.TOKEN);

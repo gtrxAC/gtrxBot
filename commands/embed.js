@@ -12,10 +12,11 @@ module.exports = {
 		let [title, description, footer, image] = args.join(' ').split(';');
 
 		// If no image was specified, use the attachments.
-		if (!image && message.attachments.size) image = message.attachments.first().proxyURL;
+		if (!image && message.attachments.size)
+			image = message.attachments.first().proxyURL;
 
 		// Delete the command message with a small delay so the embed image shows up.
-		message.delete({timeout: 500});
+		message.delete({ timeout: 500 });
 
 		// Create the embed.
 		const embed = tools.embed(title)

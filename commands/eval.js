@@ -10,6 +10,6 @@ module.exports = {
 	ownerOnly: true,
 	async run(message, args) {
 		return tools.embed('Success')
-		.setDescription(eval(args.join(' ')));
+			.setDescription(eval(args.join(' ')));
 	}
 }

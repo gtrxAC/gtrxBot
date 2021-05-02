@@ -7,7 +7,7 @@ module.exports = {
 	description: "Checks the bot's latency to Discord.",
 	async run(message, [test]) {
 		// If -t was specified, test message actions.
-		if (test == '-t') {
+		if (test === '-t') {
 			// Check message send ping.
 			const sendStart = Date.now();
 			const reply = await message.channel.send("Checking ping... `message.edit`")

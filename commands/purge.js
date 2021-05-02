@@ -18,8 +18,9 @@ module.exports = {
 
 		// Send a confirmation and delete it after 1 second.
 		const embed = tools.embed('Success')
-		.setDescription(`Deleted ${msgs} messages`);
+			.setDescription(`Deleted ${msgs} messages`);
+
 		const reply = await message.channel.send(embed);
-		reply.delete({timeout: 1000});
+		reply.delete({ timeout: 1000 });
 	}
 }

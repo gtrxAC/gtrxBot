@@ -7,7 +7,7 @@ module.exports = {
 	description: "Generates a random number.",
 	usage: '<min> <max>',
 	minArgs: 2,
-	async run(message, [min, max]) {
+	async run(_, [min, max]) {
 		// Generate a random number.
 		const number = Math.round(Math.random() * (max - min)) + Number(min);
 

@@ -1,6 +1,6 @@
 const Canvas = require('canvas');
 const tools = require('../tools');
-const {MessageAttachment} = require('discord.js');
+const { MessageAttachment } = require('discord.js');
 
 module.exports = {
 	name: 'scale',
@@ -28,6 +28,6 @@ module.exports = {
 
 		// Send the image.
 		const attachment = new MessageAttachment(canvas.toBuffer(), 'scaled.png');
-		return {files: [attachment]};
+		return { files: [attachment] };
 	}
 }
