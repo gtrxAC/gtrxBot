@@ -91,4 +91,5 @@ Runs JavaScript code.
 * `REDDIT_CLIENT_SECRET`
 * `REDDIT_USERNAME`
 * `REDDIT_PASSWORD`
-6. Run the bot. `node index.js`
+6. If you don't want to use the `reddit` command, set the environment variable `NO_REDDIT` to 1.
+7. Run the bot. `node index.js`

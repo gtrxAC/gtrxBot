@@ -1,10 +1,15 @@
-const snoowrap = require('snoowrap');
-const tools = require('../tools');
-
-if (!process.env.REDDIT_USER_AGENT) {
+if (!process.env.TOKEN) {
 	const e = new Error(`Environment variables not set, see README for details.`);
 	throw e;
 }
+
+if (!process.env.REDDIT_USER_AGENT) {
+	console.log("Reddit environment variables not set, reddit command not available.");
+	return;
+}
+
+const snoowrap = require('snoowrap');
+const tools = require('../tools');
 
 const reddit = new snoowrap({
 	userAgent: process.env.REDDIT_USER_AGENT,
