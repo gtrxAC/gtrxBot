@@ -38,7 +38,7 @@ module.exports = {
 			for (let category of categories) {
 				let list = '';
 				for (let command of message.client.commands) {
-					if (command.category != category) return;
+					if (command.category != category) continue;
 					list += `**${command.name}:** ${command.description}\n`
 				}
 				embed.addField(category, list);
