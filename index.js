@@ -115,4 +115,10 @@ client.on('message', async message => {
 	console.log('ready!');
 })
 
+// Make sure the token is set.
+if (!process.env.TOKEN) {
+	const e = new Error(`Environment variables not set, see README for details.`);
+	throw e;
+}
+
 client.login(process.env.TOKEN);
