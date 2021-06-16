@@ -43,6 +43,6 @@ if (process.env.REDDIT_USER_AGENT) {
 		name: 'reddit',
 		category: 'Fun',
 		description: '(not available)',
-		run() {}
+		run() { }
 	}
 }

@@ -74,14 +74,16 @@ client.on('message', async message => {
 	// Run the command.
 	try {
 		const result = await run(message, args);
-		if (result) {
-			// If the command succeeded, send the result and set a cooldown.
-			message.channel.send(result);
-			timestamps.set(message.author.id, Date.now());
-			setTimeout(() => timestamps.delete(message.author.id), cooldown);
-		}
-	} catch (error) {
-		tools.error(message, error.message);
+		
+		// The command's return value is sent. If it's false, nothing is sent.
+		if (result) message.channel.send(result);
+		
+		timestamps.set(message.author.id, Date.now());
+		setTimeout(() => timestamps.delete(message.author.id), cooldown);
+	} catch (e) {
+		// If the command throws an error, send the error message and don't
+		// apply a cooldown.
+		tools.error(message, e.message);
 	}
 })
 

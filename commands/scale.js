@@ -15,7 +15,7 @@ module.exports = {
 		if (width > 4000 || height > 4000) throw new Error('too large, max 4000 px');
 
 		// Get the image link.
-		const link = await tools.fetchImage(message);
+		const link = tools.fetchImage(message);
 
 		// Create a new image.
 		const canvas = Canvas.createCanvas(width, height);

@@ -9,6 +9,9 @@ module.exports = {
 	cooldown: 0,
 	ownerOnly: true,
 	async run(message, args) {
+		// Allow `client` shorthand for `message.client`.
+		const { client } = message;
+
 		return tools.embed('Success')
 			.setDescription(eval(args.join(' ')));
 	}

@@ -1,5 +1,5 @@
 const tools = require('../tools');
-const { categories } = require('../config.json');
+const { categories, repo } = require('../config.json');
 
 module.exports = {
 	name: 'help',
@@ -29,23 +29,23 @@ module.exports = {
 
 			// Send the embed.
 			return embed.setDescription(desc);
-		} else {
-			// If no command was specified, show every command in a list.
-			const embed = tools.embed(`Command List`)
-				.setDescription("See a more detailed list [here](https://github.com/gtrxAC/gtrxBot/blob/master/README.md#command-list).");
-
-			// Create a command list for each command category.
-			for (let category of categories) {
-				let list = '';
-				for (let command of message.client.commands.array()) {
-					if (command.category != category) continue;
-					list += `**${command.name}:** ${command.description}\n`
-				}
-				embed.addField(category, list);
-			}
-
-			// Send the embed.
-			return embed;
 		}
+
+		// If no command was specified, show every command in a list.
+		const embed = tools.embed(`Command List`)
+			.setDescription(`See a more detailed list [here](https://github.com/${repo}/blob/master/README.md#command-list).`);
+
+		// Create a command list for each command category.
+		for (let category of categories) {
+			let list = '';
+			for (let command of message.client.commands.array()) {
+				if (command.category != category) continue;
+				list += `**${command.name}:** ${command.description}\n`
+			}
+			embed.addField(category, list);
+		}
+
+		// Send the embed.
+		return embed;
 	}
 }

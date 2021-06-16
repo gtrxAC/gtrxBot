@@ -83,7 +83,7 @@ Runs JavaScript code.
 * `snoowrap` is used for the `reddit` command.
 * `canvas` is used for some image commands.
 3. Set the `TOKEN` environment variable to your bot token. [Create a bot account here](https://discord.com/developers)
-* You can use a startup script or `dotenv` to set up environment variables.
+* You can use a `start.sh` shell script or the `dotenv` module to set up environment variables.
 4. Change the owner ID in config.json to your user ID. [How to get your ID](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-)
 5. If you want to use the `reddit` command, create a [Reddit API](https://www.reddit.com/prefs/apps) application and set the following environment variables:
 * `REDDIT_USER_AGENT`
@@ -91,5 +91,4 @@ Runs JavaScript code.
 * `REDDIT_CLIENT_SECRET`
 * `REDDIT_USERNAME`
 * `REDDIT_PASSWORD`
-6. If you don't want to use the `reddit` command, set the environment variable `NO_REDDIT` to 1.
 7. Run the bot. `node index.js`

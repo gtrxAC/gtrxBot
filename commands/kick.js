@@ -29,8 +29,6 @@ module.exports = {
 				message.channel.send(tools.embed('Success')
 					.setDescription(`Kicked ${target}`));
 			})
-			.catch(e => {
-				tools.error(message, e);
-			});
+			.catch(e => { throw new Error(e) });
 	}
 }

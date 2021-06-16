@@ -13,6 +13,6 @@ module.exports = {
 
 		// Send an embed with the number.
 		return tools.embed('Random Number')
-		.setDescription(`**Range:** ${min}, ${max}\n**Result:** ${number}`);
+			.setDescription(`**Range:** ${min}, ${max}\n**Result:** ${number}`);
 	}
 }

@@ -12,14 +12,14 @@ module.exports = {
 		// If a channel was mentioned, use that, otherwise use the current channel.
 		const channel = message.mentions.channels.first() || message.channel;
 
-		// If -v was given, don't allow viewing the channel at all.
-		const overwrite = (args.includes('-v') ? {VIEW_CHANNEL: true} : {SEND_MESSAGES: true})
+		// If -v was given, change the view channel permission.
+		const overwrite = args.includes('-v') ? 'VIEW_CHANNEL' : 'SEND_MESSAGES';
 
 		// Update the channel's permissions.
-		channel.updateOverwrite(message.guild.roles.everyone, overwrite);
+		channel.updateOverwrite(message.guild.roles.everyone, { [overwrite]: true });
 
 		// Send a confirmation message.
 		return tools.embed('Success')
-		.setDescription(`Unlocked ${channel}`);
+			.setDescription(`Unlocked ${channel}`);
 	}
 }

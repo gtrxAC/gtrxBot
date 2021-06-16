@@ -19,7 +19,7 @@ module.exports = {
 		message.delete({ timeout: 500 });
 
 		// Create the embed.
-		const embed = tools.embed(title)
+		const embed = tools.embed(title);
 		if (description) embed.setDescription(description);
 		if (footer) embed.setFooter(footer);
 		if (image) embed.setImage(image);

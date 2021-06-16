@@ -5,7 +5,7 @@ module.exports = {
 	category: 'Utility',
 	aliases: ['ch'],
 	description: "Chooses one of the given options.",
-	usage: '<choice1>, <choice2>, [...]',
+	usage: '<choice1> , <choice2> , [...]',
 	minArgs: 1,
 	async run(message, args) {
 		// Split the arguments by commas.
@@ -15,7 +15,7 @@ module.exports = {
 		const choice = args[Math.floor(Math.random() * args.length)];
 
 		if (args.length < 2)
-			return tools.error(message, "Only one choice specified (try separating by commas)");
+			throw new Error("Only one choice specified (try separating by commas)");
 
 		// Send an embed with the choice.
 		return tools.embed('Random Choice')

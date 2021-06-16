@@ -14,7 +14,7 @@ module.exports = {
 		const msgs = Math.min(amount, 99);
 
 		// Delete the messages.
-		await message.channel.bulkDelete(msgs + 1)
+		await message.channel.bulkDelete(msgs + 1);
 
 		// Send a confirmation and delete it after 1 second.
 		const embed = tools.embed('Success')

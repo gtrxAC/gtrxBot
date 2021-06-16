@@ -31,17 +31,17 @@ module.exports = {
 
 			// Send the results in an embed.
 			return tools.embed('Test complete')
-			.setDescription(
-				`**Message Send:** ${sendPing} ms\n`+
-				`**Message Edit:** ${editPing} ms\n`+
-				`**Message React:** ${reactPing} ms\n`+
-				`**Message Delete:** ${deletePing} ms\n\n`+
-				`**Total:** ${sendPing + editPing + reactPing + deletePing} ms\n`
-			)
-		} else {
-			// Otherwise just send the websocket ping.
-			return tools.embed('Success')
-			.setDescription(`${message.client.ws.ping} ms`);
+				.setDescription(
+					`**Message Send:** ${sendPing} ms\n` +
+					`**Message Edit:** ${editPing} ms\n` +
+					`**Message React:** ${reactPing} ms\n` +
+					`**Message Delete:** ${deletePing} ms\n\n` +
+					`**Total:** ${sendPing + editPing + reactPing + deletePing} ms\n`
+				)
 		}
+
+		// Otherwise just send the websocket ping.
+		return tools.embed('Success')
+			.setDescription(`${message.client.ws.ping} ms`);
 	}
 }
