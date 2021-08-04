@@ -1,13 +1,13 @@
 # gtrxBot
 
-the 3rd iteration of nobody's favorite discord utility bot
+Simple and open-source utility bot with useful commands like snipe and sayas.
 
 [Invite Link](https://discord.com/oauth2/authorize?client_id=568738663572176916&permissions=8&scope=bot)
 
 
 
 ## Command List
-The prefix is `gb`, for example `gbpurge` or `gbpu` to purge.
+The prefix is `gb`, for example `gbpurge` or `gbpu` to purge. All commands can be written in 5 or less characters with abbreviations.
 
 
 ### Fun
