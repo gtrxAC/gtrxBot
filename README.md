@@ -28,7 +28,7 @@ Reveals the last edited message in the specified or current channel. Edited mess
 * `embed/emb <title> ; [description] ; [footer] ; [image url]`<br>
 Creates an embed message. The image can also be specified through an attachment. [Examples](https://cdn.discordapp.com/attachments/558927357893935106/872579167852593232/unknown.png)
 
-* `poll/po/vote <question> ; <choice1> ; <choice2> ...`
+* `poll/po/vote <question> ; <choice1> ; <choice2> ...`<br>
 Creates a reaction poll. Supports up to 26 choices separated by semicolons.
 
 * `random/rnd <min> <max>`<br>
