@@ -22,11 +22,14 @@ Calculates a mathematical expression. [Supported operators](https://gist.github.
 * `choose/ch <choice1>, <choice2>, [...]`<br>
 Chooses one of the given choices randomly. The options must be separated by commas.
 
-* `editsnipe/esn [#channel]`<br>
+* `editsnipe/esn/es [#channel]`<br>
 Reveals the last edited message in the specified or current channel. Edited messages are stored until the bot restarts.
 
 * `embed/emb <title> ; [description] ; [footer] ; [image url]`<br>
-Creates an embed message. The image can also be specified through an attachment.
+Creates an embed message. The image can also be specified through an attachment. [Examples](https://cdn.discordapp.com/attachments/558927357893935106/872579167852593232/unknown.png)
+
+* `poll/po/vote <question> ; <choice1> ; <choice2> ...`
+Creates a reaction poll. Supports up to 26 choices separated by semicolons.
 
 * `random/rnd <min> <max>`<br>
 Generates a random number with the specified lower and upper range.
