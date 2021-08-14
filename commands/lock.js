@@ -21,7 +21,7 @@ module.exports = {
 			&& channel.permissionOverwrites.get(everyone).deny.has(prop);
 
 		// Toggle the permission.
-		channel.updateOverwrite(everyone, { [prop]: perm })
+		channel.permissionOverwrites.edit(everyone, { [prop]: perm })
 			.then(() => {
 				message.channel.send(tools.embed('Success')
 					.setDescription(`${perm ? 'Unlocked' : 'Locked'} ${channel}`));

@@ -21,6 +21,6 @@ module.exports = {
 			.setDescription(`Deleted ${msgs} messages`);
 
 		const reply = await message.channel.send(embed);
-		reply.delete({ timeout: 1000 });
+		setTimeout(() => reply.delete(), 1000);
 	}
 }

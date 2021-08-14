@@ -38,7 +38,7 @@ module.exports = {
 		// Create a command list for each command category.
 		for (let category of categories) {
 			let list = '';
-			for (let command of message.client.commands.array()) {
+			for (let command of [...message.client.commands.values()]) {
 				if (command.category != category) continue;
 				list += `**${command.name}:** ${command.description}\n`
 			}

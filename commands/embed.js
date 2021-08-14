@@ -16,7 +16,7 @@ module.exports = {
 			image = message.attachments.first().proxyURL;
 
 		// Delete the command message with a small delay so the embed image shows up.
-		message.delete({ timeout: 500 });
+		setTimeout(() => message.delete(), 500);
 
 		// Create the embed.
 		const embed = tools.embed(title);

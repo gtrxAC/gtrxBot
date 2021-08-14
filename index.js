@@ -1,10 +1,17 @@
 // Load the required modules.
-const { Client, Collection } = require('discord.js');
+const { Client, Collection, Intents, MessageEmbed } = require('discord.js');
 const fs = require('fs');
 const config = require('./config.json');
 const tools = require('./tools');
-const client = new Client();
 const cooldowns = new Collection();
+
+const client = new Client({
+	intents: [
+		Intents.FLAGS.GUILDS,
+		Intents.FLAGS.GUILD_MESSAGES,
+		Intents.FLAGS.DIRECT_MESSAGES
+	]
+});
 
 client.commands = new Collection();
 client.snipeMap = new Map();
@@ -20,7 +27,7 @@ fs.readdirSync('./commands')
 	})
 
 // Message handler, see https://discordjs.guide/command-handling/
-client.on('message', async message => {
+client.on('messageCreate', async message => {
 	// Ignore bot and non-command messages.
 	const { prefix } = config;
 	if (!message.content.startsWith(prefix)) return;
@@ -65,7 +72,7 @@ client.on('message', async message => {
 	if (ownerOnly && !config.owners.includes(message.author.id))
 		return tools.error(message, `${name} is set to owner only`);
 
-	if (guildOnly && !['text', 'news'].includes(message.channel.type))
+	if (guildOnly && message.channel.type === 'DM')
 		return tools.error(message, `${name} is set to guild only`);
 
 	if (requires && !message.member.permissions.has(requires))
@@ -73,10 +80,13 @@ client.on('message', async message => {
 
 	// Run the command.
 	try {
-		const result = await run(message, args);
+		let result = await run(message, args);
 		
 		// The command's return value is sent. If it's false, nothing is sent.
-		if (result) message.channel.send(result);
+		if (result) {
+			if (result instanceof MessageEmbed) result = { embeds: [result] };
+			message.channel.send(result);
+		}
 		
 		timestamps.set(message.author.id, Date.now());
 		setTimeout(() => timestamps.delete(message.author.id), cooldown);
